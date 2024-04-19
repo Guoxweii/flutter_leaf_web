@@ -1,0 +1,1 @@
+System.register(["./main-legacy-BEP8B0aF.bundle.js"],(function(t,e){"use strict";var n,i,o,r;return{setters:[t=>{n=t.Y,i=t.E,o=t.l,r=t.az}],execute:function(){t("u",(function(){const t=n(!1);return i((()=>{window.requestAnimationFrame((()=>{t.value=!0}))})),{ssrBootStyles:o((()=>t.value?void 0:{transition:"none !important"})),isBooted:r(t)}}))}}}));

@@ -1,0 +1,1 @@
+import{d as c,B as r,C as _,__tla as l}from"./main-_r7r4w26.bundle.js";let e,u=Promise.all([(()=>{try{return l}catch(s){}})()]).then(async()=>{e=c({__name:"index",setup(s){const a=r(),n=_(),t=a.account;return t&&t.checkType()=="Student"&&(a.signIn(t),n.push("/sb")),()=>{}}})});export{u as __tla,e as default};

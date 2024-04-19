@@ -1,0 +1,1 @@
+System.register(["./main-legacy-BEP8B0aF.bundle.js"],(function(e,t){"use strict";var n,s,u;return{setters:[e=>{n=e.d,s=e.B,u=e.C}],execute:function(){e("default",n({__name:"index",setup(e){const t=s(),n=u(),c=t.account;return c&&"Student"==c.checkType()&&(t.signIn(c),n.push("/sb")),()=>{}}}))}}}));

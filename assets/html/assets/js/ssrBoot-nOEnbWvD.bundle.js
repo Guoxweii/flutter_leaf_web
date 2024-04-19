@@ -1,0 +1,1 @@
+import{Y as o,E as e,l as n,az as s,__tla as r}from"./main-_r7r4w26.bundle.js";let a,i=Promise.all([(()=>{try{return r}catch(t){}})()]).then(async()=>{a=function(){const t=o(!1);return e(()=>{window.requestAnimationFrame(()=>{t.value=!0})}),{ssrBootStyles:n(()=>t.value?void 0:{transition:"none !important"}),isBooted:s(t)}}});export{i as __tla,a as u};

@@ -47,7 +47,7 @@ class _EntryPageState extends State<EntryPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('http://192.168.24.120:8080/'));
+      ..loadRequest(Uri.parse('http://localhost:8089/'));
 
     setState(() {
       _isLoading = false;
