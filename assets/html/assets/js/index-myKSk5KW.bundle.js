@@ -1,0 +1,1 @@
+import{d as e,C as r,__tla as s}from"./main-_r7r4w26.bundle.js";let t,_=Promise.all([(()=>{try{return s}catch(a){}})()]).then(async()=>{t=e({__name:"index",setup(a){return r().push("/sb/workathons"),()=>{}}})});export{_ as __tla,t as default};

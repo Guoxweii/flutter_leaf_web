@@ -1,0 +1,1 @@
+System.register(["./main-legacy-BEP8B0aF.bundle.js"],(function(e,t){"use strict";var r,n,u,c;return{setters:[e=>{r=e._,n=e.c,u=e.r,c=e.o}],execute:function(){e("default",r({},[["render",function(e,t){const r=u("router-view");return c(),n(r)}]]))}}}));

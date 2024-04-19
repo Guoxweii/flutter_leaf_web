@@ -1,0 +1,1 @@
+System.register(["./main-legacy-BEP8B0aF.bundle.js"],(function(e,n){"use strict";return{setters:[null],execute:function(){e("r",(function(e){const n=e.indexOf("#");return-1!==n?e.slice(0,n):e}))}}}));

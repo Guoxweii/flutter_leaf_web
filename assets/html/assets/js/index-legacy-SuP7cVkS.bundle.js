@@ -1,0 +1,1 @@
+System.register(["./main-legacy-BEP8B0aF.bundle.js"],(function(e,t){"use strict";var s,n;return{setters:[e=>{s=e.d,n=e.C}],execute:function(){e("default",s({__name:"index",setup:e=>(n().push("/sb/workathons"),()=>{})}))}}}));

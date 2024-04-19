@@ -1,7 +1,39 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_leaf_web/entry.dart';
+import 'dart:convert';
+import 'dart:ffi';
+import 'dart:io';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_leaf_web/entry.dart';
+import 'package:shelf/shelf_io.dart' as io;
+import 'package:shelf_static/shelf_static.dart';
+import 'package:path_provider/path_provider.dart';
+
+
+
+Future<void> copyAssetsDirectory(String assetsDirectory) async {
+  final manifestContent = await rootBundle.loadString('AssetManifest.json');
+  print("--------manifestContent is ${manifestContent}---------");
+
+  final directory = await getApplicationDocumentsDirectory();
+
+  final configJson = await rootBundle.loadString('assets/manifest.txt');
+  final paths = configJson.split('\n');
+  List<String> files = paths
+      .where((String key) => key.startsWith(assetsDirectory))
+      .toList();
+
+  for (String file in files) {
+    print("--------file is ${file}---------");
+    final byteData = await rootBundle.load("assets/$file");
+    final fileInDocuments = File('${directory.path}/$file');
+
+    fileInDocuments.parent.createSync(recursive: true);
+    await fileInDocuments.writeAsBytes(byteData.buffer.asUint8List());
+  }
+}
+
+main() async {
   runApp(const MyApp());
 }
 
@@ -57,6 +89,26 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  @override
+  initState() {
+    super.initState();
+  }
+
+  initWebServer() async {
+    await copyAssetsDirectory('html');
+    final directory = await getApplicationDocumentsDirectory();
+
+    var dir = Directory("${directory.path}/html");
+    var result = await dir.exists();
+    if (!result) {
+    } else {
+      print(dir.list().toList());
+    }
+
+    var handler = createStaticHandler(dir.path, defaultDocument: 'index.html');
+    io.serve(handler, 'localhost', 8089);
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -114,8 +166,8 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
 
-            TextButton(onPressed: () {
-              openWebview(context);
+            TextButton(onPressed: () async {
+              await openWebview(context);
             }, child: const Text('open webview')),
           ],
         ),
@@ -128,7 +180,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void openWebview(BuildContext context) {
+  openWebview(BuildContext context) async {
+    await initWebServer();
+
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => EntryPage(title: "Leaf Webview")),
